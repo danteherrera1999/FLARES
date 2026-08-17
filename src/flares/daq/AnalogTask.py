@@ -3,15 +3,12 @@ import nidaqmx
 import numpy as np
 from dataclasses import dataclass
 from nidaqmx.stream_readers import AnalogMultiChannelReader
-from nidaqmx.constants import AcquisitionType
-
-@dataclass(slots=True)
-class AnalogCardPacket:
-    packet_index: int
-    data: np.ndarray
+from nidaqmx.constants import AcquisitionType, Edge, TaskMode
+from flares.data.Packets import AnalogCardPacket
 
 class AnalogTask():
-    def __init__(self, DEVICE_NAME,OUTPUT_QUEUE):
+    def __init__(self, TASK_ID,DEVICE_NAME,OUTPUT_QUEUE):
+        self.id = TASK_ID
         self.task = nidaqmx.Task()
         self.channels = [f"{DEVICE_NAME}/ai{i}" for i in range(16)] # Hardcoded 16 channels for now
         self.device_name = DEVICE_NAME
@@ -47,11 +44,13 @@ class AnalogTask():
         self.reader.read_many_sample(self.read_buffer,number_of_samples_per_channel=self.packet_size)
         packet_data = self.read_buffer.copy()
         packet_index = self.packet_index
-        self.output_queue.put(AnalogCardPacket(packet_index,packet_data))
+        self.output_queue.put(AnalogCardPacket(self.id,packet_index,packet_data))
         self.packet_index += 1
         return 0
+    
     def start(self):
         self.task.start()
+
     def stop(self):
         self.task.stop()
         self.task.close()
