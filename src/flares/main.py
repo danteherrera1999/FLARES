@@ -1,18 +1,17 @@
 from daq.DaqManager import DaqManager
+from gui.GuiMain import GuiMain
+from data.DataBuffer import DataBuffer
 import numpy as np
 import queue
-from time import time
 
 my_data_queue = queue.Queue()
-my_daq_manager = DaqManager(my_data_queue)
+my_data_buffer = DataBuffer(1000,64)
+my_daq_manager = DaqManager(my_data_queue,my_data_buffer)
 
+my_gui = GuiMain(my_data_buffer)
 
 my_daq_manager.start()
-
-t0 = time()
-
-while time() - t0 < 2:
-    packet = my_data_queue.get()
-    print(f"Packet {packet.packet_index}, Size: {packet.data.shape}")
-
-my_daq_manager.stop_event.set()
+try:
+    my_gui.run()
+finally:
+    my_daq_manager.stop_event.set()

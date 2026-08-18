@@ -1,5 +1,5 @@
 import numpy as np
-
+from data.Packets import RawPacket
 #This stores our plot data, it is lossful and cyclic, but it is stored contiguously and very efficient
 class DataBuffer:
     def __init__(self, size, total_channels):
@@ -42,3 +42,7 @@ class DataBuffer:
         t_ordered = np.concatenate((self.t[self.cursor:], self.t[:self.cursor]))
         data_ordered = np.concatenate((self.data[:, self.cursor:], self.data[:, :self.cursor]), axis=1)
         return t_ordered, data_ordered
+
+    def extend_from_packet(self,packet):
+        new_times = packet.packet_index * 100 + np.arange(100)
+        self.extend(new_times,packet.data)
