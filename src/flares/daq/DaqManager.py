@@ -7,10 +7,11 @@ import threading
 class DaqManager(threading.Thread):
     N_ANALOG_TASKS = 4
 
-    def __init__(self,RAW_DATA_QUEUE,DATA_BUFFER,daemon=True):
+    def __init__(self,SYSTEM_CONFIG,daemon=True):
         super().__init__(daemon=daemon)
-        self.raw_data_queue = RAW_DATA_QUEUE
-        self.data_buffer=DATA_BUFFER
+        self.system_config = SYSTEM_CONFIG
+        self.raw_data_queue = self.system_config["data queue"]
+        self.data_buffer=self.system_config["data buffer"]
         self.tasks = []
         self.card_packet_queue = queue.Queue()
         self.pending_packets = {}
@@ -73,4 +74,4 @@ class DaqManager(threading.Thread):
 
         new_packet = RawPacket(packet_index,combined_packet_data)
         self.data_buffer.extend_from_packet(new_packet)
-        self.raw_data_queue.put(new_packet)
+        # self.raw_data_queue.put(new_packet)

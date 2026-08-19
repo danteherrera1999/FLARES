@@ -4,11 +4,19 @@ from data.DataBuffer import DataBuffer
 import numpy as np
 import queue
 
-my_data_queue = queue.Queue()
-my_data_buffer = DataBuffer(1000,64)
-my_daq_manager = DaqManager(my_data_queue,my_data_buffer)
 
-my_gui = GuiMain(my_data_buffer)
+channels = []
+for i in range(4):
+    for j in range(16):
+        channels.append(f"PXI1Slot{i+2}/ai{j}")
+config={"channels":channels,
+        "data queue": queue.Queue(),
+        "data buffer": DataBuffer(10000,64)}
+config["channel map"]= {ch: i for i, ch in enumerate(config["channels"])}
+
+my_daq_manager = DaqManager(config)
+
+my_gui = GuiMain(config)
 
 my_daq_manager.start()
 try:
