@@ -12,7 +12,7 @@ class AnalogTask():
         self.task = nidaqmx.Task()
         self.channels = [f"{DEVICE_NAME}/ai{i}" for i in range(16)] # Hardcoded 16 channels for now
         self.device_name = DEVICE_NAME
-        self.daq_sampling_rate = 1000
+        self.daq_sampling_rate = 100000
         self.buffer_size = 2000
         self.packet_size = 100
         self.output_queue = OUTPUT_QUEUE

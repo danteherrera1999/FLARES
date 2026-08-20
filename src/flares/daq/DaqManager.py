@@ -1,5 +1,5 @@
 from flares.daq.AnalogTask import AnalogTask
-from flares.data.Packets import RawPacket
+from flares.data.Packets import DataPacket
 import numpy as np
 import queue
 import threading
@@ -11,7 +11,7 @@ class DaqManager(threading.Thread):
         super().__init__(daemon=daemon)
         self.system_config = SYSTEM_CONFIG
         self.raw_data_queue = self.system_config["data queue"]
-        self.data_buffer=self.system_config["data buffer"]
+        self.plot_buffer = self.system_config["plot buffer"]
         self.tasks = []
         self.card_packet_queue = queue.Queue()
         self.pending_packets = {}
@@ -45,7 +45,6 @@ class DaqManager(threading.Thread):
     def stop(self):
         for task in self.tasks:
             task.stop()
-            task.close()
 
     def handle_packet(self,packet):
 
@@ -72,6 +71,6 @@ class DaqManager(threading.Thread):
         combined_packet_data[32:48] = packet_frame[2].data
         combined_packet_data[48:64] = packet_frame[3].data
 
-        new_packet = RawPacket(packet_index,combined_packet_data)
-        self.data_buffer.extend_from_packet(new_packet)
+        new_packet = DataPacket(packet_index,combined_packet_data)
         # self.raw_data_queue.put(new_packet)
+        self.plot_buffer.extend_all_buffers(new_packet)

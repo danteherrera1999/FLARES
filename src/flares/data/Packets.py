@@ -16,3 +16,6 @@ class RawPacket:
 class DataPacket:
     packet_index: int
     data: ndarray
+    def decimate(self):
+        self.data = self.data[:,::10]
+        return self

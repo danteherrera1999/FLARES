@@ -1,6 +1,6 @@
 from daq.DaqManager import DaqManager
 from gui.GuiMain import GuiMain
-from data.DataBuffer import DataBuffer
+from data.PlotBuffer import PlotBuffer
 import numpy as np
 import queue
 
@@ -11,7 +11,8 @@ for i in range(4):
         channels.append(f"PXI1Slot{i+2}/ai{j}")
 config={"channels":channels,
         "data queue": queue.Queue(),
-        "data buffer": DataBuffer(10000,64)}
+        "plot buffer": PlotBuffer(),
+        }
 config["channel map"]= {ch: i for i, ch in enumerate(config["channels"])}
 
 my_daq_manager = DaqManager(config)

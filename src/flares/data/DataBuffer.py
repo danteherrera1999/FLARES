@@ -2,12 +2,13 @@ import numpy as np
 
 #This stores our plot data, it is lossful and cyclic, but it is stored contiguously and very efficient
 class DataBuffer:
-    def __init__(self, size, total_channels):
+    def __init__(self, size, total_channels,rate):
         self.size = size
         self.cursor = 0 #This keeps track of the position in the buffer 
         self.filled = False
         self.t = np.zeros(size, dtype=np.float64)
         self.data = np.zeros((total_channels, size), dtype=np.float64)
+        self.rate = rate
 
     def extend(self, new_times, new_data_matrix):
         n = len(new_times)
@@ -44,5 +45,5 @@ class DataBuffer:
         return t_ordered, data_ordered
 
     def extend_from_packet(self,packet):
-        new_times = (packet.packet_index * 100 + np.arange(100))/1000
+        new_times = packet.packet_index * 100 / 100000 + np.arange(packet.data.shape[1])/self.rate
         self.extend(new_times,packet.data)
