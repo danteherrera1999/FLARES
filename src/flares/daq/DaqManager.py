@@ -5,22 +5,19 @@ import queue
 import threading
 
 class DaqManager(threading.Thread):
-    N_ANALOG_TASKS = 4
 
     def __init__(self,SYSTEM_CONFIG,daemon=True):
         super().__init__(daemon=daemon)
         self.system_config = SYSTEM_CONFIG
-        self.raw_data_queue = self.system_config["data queue"]
-        self.plot_buffer = self.system_config["plot buffer"]
-        self.tasks = []
-        self.card_packet_queue = queue.Queue()
-        self.pending_packets = {}
+        self.data_queue = self.system_config["data queue"] # Processed Data Outward Queue
+        self.plot_buffer = self.system_config["plot buffer"] # Lossful Buffer for Plots
+        self.tasks = [] # All task objects
+        self.analog_packet_queue = queue.Queue() # Raw Data Queue From Analog
         self.configure()
         self.stop_event = threading.Event()
 
     def configure(self):
-        for i in range(self.N_ANALOG_TASKS):
-            self.tasks.append(AnalogTask(i,f"PXI1Slot{i+2}",self.card_packet_queue))
+        self.tasks.append(AnalogTask(self.system_config["analog input devices"],self.analog_packet_queue)) # Append Analog Input Task
 
     def run(self):
 
@@ -29,7 +26,7 @@ class DaqManager(threading.Thread):
         try:
             while not self.stop_event.is_set():
                 try:
-                    packet = self.card_packet_queue.get(timeout=.1)
+                    packet = self.analog_packet_queue.get(timeout=.1)
                     
                 except queue.Empty:
                     continue
@@ -47,30 +44,5 @@ class DaqManager(threading.Thread):
             task.stop()
 
     def handle_packet(self,packet):
-
-        packet_index = packet.packet_index
-        if packet_index not in self.pending_packets:
-            self.pending_packets[packet_index] = {}
-        packet_frame = self.pending_packets[packet_index]
-        packet_frame[packet.task_id] = packet
-
-        if len(packet_frame) == self.N_ANALOG_TASKS:
-            self.build_combined_packet(packet_index,packet_frame)
-            del self.pending_packets[packet_index]
-
-    def build_combined_packet(self,packet_index,packet_frame):
-
-        packet_size = packet_frame[0].data.shape[1]
-
-        combined_packet_data = np.empty((64,packet_size),dtype=np.float64)
-
-        # Hardcoded for now as it is more efficient than calcultating placement dynamically since this is being called 100 times per second
-
-        combined_packet_data[0:16] = packet_frame[0].data
-        combined_packet_data[16:32] = packet_frame[1].data
-        combined_packet_data[32:48] = packet_frame[2].data
-        combined_packet_data[48:64] = packet_frame[3].data
-
-        new_packet = DataPacket(packet_index,combined_packet_data)
-        # self.raw_data_queue.put(new_packet)
+        new_packet = DataPacket(packet.packet_index,packet.data) #Standin for calibration
         self.plot_buffer.extend_all_buffers(new_packet)

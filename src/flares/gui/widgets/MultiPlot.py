@@ -38,7 +38,7 @@ class MultiPlot:
                             dpg.add_text("-100", tag=f"{plot_group}_chan_{i+1}_min")
                             dpg.add_text("100", tag=f"{plot_group}_chan_{i+1}_max")
                 dpg.add_combo(
-                    [1, 10, 100, 1_000, 10_000, 100_000],
+                    [1, 10, 100, 1_000, 10_000],
                     default_value=1_000,
                     callback=self.sample_rate_callback,
                     tag=f"{plot_group}_sr_combo",

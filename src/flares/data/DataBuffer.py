@@ -45,5 +45,5 @@ class DataBuffer:
         return t_ordered, data_ordered
 
     def extend_from_packet(self,packet):
-        new_times = packet.packet_index * 100 / 100000 + np.arange(packet.data.shape[1])/self.rate
+        new_times = packet.packet_index * 100 / 10000 + np.arange(packet.data.shape[1])/self.rate
         self.extend(new_times,packet.data)
