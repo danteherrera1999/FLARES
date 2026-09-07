@@ -1,6 +1,7 @@
 import dearpygui.dearpygui as dpg
 from gui.tabs.DataTab import DataTab
 from gui.tabs.ConfigureTab import ConfigureTab
+from gui.tabs.HardwareConfigureTab import HardwareConfigureTab
 
 class GuiMain():
     def __init__(self,SYSTEM_CONFIG):
@@ -16,12 +17,14 @@ class GuiMain():
         with dpg.viewport_menu_bar():
             with dpg.menu(label="Tools"):
                 dpg.add_menu_item(label="New Detached Plot")#callback=open_detached_plot)
+                dpg.add_menu_item(label="Hardware Configuration",callback=self.handle_hardware_config_click)
 
         with dpg.window(label="Main", tag="window_main", width=400, height=400):
             dpg.add_spacer(height=20)
-            with dpg.tab_bar(label="Tab Bar"):
+            with dpg.tab_bar(label="Tab Bar",tag="tab_bar",callback=self.on_tab_change):
                 self.tabs["DATA"] = DataTab(self.system_config)
                 self.tabs["CONFIGURE"] = ConfigureTab(self.system_config)
+                self.tabs["HARDWARE CONFIGURE"] = HardwareConfigureTab(self.system_config)
 
         dpg.set_primary_window("window_main", True)
         dpg.set_viewport_resize_callback(self.viewport_resize_handler)
@@ -32,6 +35,13 @@ class GuiMain():
             for tab in self.tabs.values():
                 tab.handle_resize(new_width, new_height)
 
+    def handle_hardware_config_click(self):
+        dpg.show_item("window_hardware_configure")
+        dpg.set_value("tab_bar","window_hardware_configure")
+
+    def on_tab_change(self):
+        if dpg.get_value("tab_bar")!="window_hardware_configure":
+            dpg.hide_item("window_hardware_configure")
     
     def run(self):
         dpg.show_viewport() # Displays the viewport
