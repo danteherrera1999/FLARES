@@ -1,8 +1,11 @@
 from flares.daq.AnalogTask import AnalogTask
 from flares.data.Packets import DataPacket
+from flares.daq.CompactModule import CompactModule
 import numpy as np
+import nidaqmx
 import queue
 import threading
+
 
 class DaqManager(threading.Thread):
 
@@ -12,13 +15,19 @@ class DaqManager(threading.Thread):
         self.data_queue = self.system_config["data queue"] # Processed Data Outward Queue
         self.plot_buffer = self.system_config["plot buffer"] # Lossful Buffer for Plots
         self.tasks = [] # All task objects
+        self.devices =[] # Detect DAQ Modules
         self.analog_packet_queue = queue.Queue() # Raw Data Queue From Analog
         self.configure()
         self.stop_event = threading.Event()
 
     def configure(self):
+        self.devices = self.initialize_hardware()
         self.tasks.append(AnalogTask(self.system_config["analog input devices"],self.analog_packet_queue)) # Append Analog Input Task
 
+    def initialize_hardware(self):
+        modules = nidaqmx.system.System.local().devices[1:]
+        if len(modules) >=0:
+            return [CompactModule(module) for module in modules]
     def run(self):
 
         self.start_all_tasks()
