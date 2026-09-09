@@ -7,10 +7,9 @@ from nidaqmx.constants import AcquisitionType, Edge, TaskMode
 from flares.data.Packets import RawPacket
 
 class AnalogTask():
-    def __init__(self, DEVICE_NAMES, OUTPUT_QUEUE):
+    def __init__(self, ANALOG_CHANNELS, OUTPUT_QUEUE):
         self.task = nidaqmx.Task()
-        self.device_names = DEVICE_NAMES
-        self.channels = [f"{DEVICE_NAME}/ai{i}" for DEVICE_NAME in DEVICE_NAMES for i in range(16)] # Hardcoded 16 channels for now
+        self.channels = ANALOG_CHANNELS
         self.daq_sampling_rate = 10_000
         self.buffer_size = 2_000
         self.packet_size = 100

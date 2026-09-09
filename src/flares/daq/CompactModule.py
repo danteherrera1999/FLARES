@@ -1,18 +1,13 @@
 import nidaqmx
+from abc import ABC,abstractmethod
 
-
-
-class CompactModule():
+class CompactModule(ABC):
     def __init__(self,DEVICE):
         self.device = DEVICE
-        self.channels = []
         self.detect_hardware()
+
     def detect_hardware(self):
-        self.detect_channels()
-        print(self.device.product_type)
-        print(self.device.ai_physical_chans)
-    def detect_channels(self):
-        io_types = {
+        self.io = {
             "Analog Input": self.device.ai_physical_chans,
             "Analog Output": self.device.ao_physical_chans,
             "Digital Input": self.device.di_lines,
@@ -20,6 +15,28 @@ class CompactModule():
             "Counter Input": self.device.ci_physical_chans,
             "Counter Output": self.device.co_physical_chans,
         }
-        print(io_types)
+        
+    @classmethod
+    def create(cls,DEVICE):
+        from flares.daq.supported_modules.AnalogInputModule import AnalogInputModule
+        from flares.daq.supported_modules.DigitalInputModule import DigitalInputModule
+        from flares.daq.supported_modules.DigitalOutputModule import DigitalOutputModule
+        module_support = {
+            "Analog Input": ["9202"],
+            "Digital Input": ["9425"],
+            "Digital Output": ["9401","9476"]
+        }
+        device_product_type = DEVICE.product_type
+        device_type = None
+        for key,val in module_support.items():
+            if any([x in device_product_type for x in val]):
+                device_type = key
 
+        match device_type:
+            case "Analog Input":
+                return AnalogInputModule(DEVICE)
+            case "Digital Input":
+                return DigitalInputModule(DEVICE)
+            case "Digital Output":
+                return DigitalOutputModule(DEVICE)
 

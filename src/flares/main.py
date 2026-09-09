@@ -5,21 +5,15 @@ import nidaqmx
 import numpy as np
 import queue
 
-
-channels = []
-for i in range(4):
-    for j in range(16):
-        channels.append(f"cDAQ1Mod{i+1}/ai{j}")
-print(channels)
-config={"channels":channels,
+config={
+    "channels":DaqManager.get_hardware_channels(),
         "data queue": queue.Queue(),
         "plot buffer": PlotBuffer(),
-        "analog input devices":[f"cDAQ1Mod{1+i}" for i in range(4)],
         }
-config["channel map"]= {ch: i for i, ch in enumerate(config["channels"])}
+config["channel map"]= {ch: i for i, ch in enumerate(config["channels"]["Analog Input"])}
 
 my_daq_manager = DaqManager(config)
-quit()
+
 my_gui = GuiMain(config)
 
 my_daq_manager.start()

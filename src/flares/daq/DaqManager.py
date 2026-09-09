@@ -12,22 +12,30 @@ class DaqManager(threading.Thread):
     def __init__(self,SYSTEM_CONFIG,daemon=True):
         super().__init__(daemon=daemon)
         self.system_config = SYSTEM_CONFIG
+        self.channels = SYSTEM_CONFIG["channels"]
         self.data_queue = self.system_config["data queue"] # Processed Data Outward Queue
         self.plot_buffer = self.system_config["plot buffer"] # Lossful Buffer for Plots
         self.tasks = [] # All task objects
-        self.devices =[] # Detect DAQ Modules
         self.analog_packet_queue = queue.Queue() # Raw Data Queue From Analog
         self.configure()
         self.stop_event = threading.Event()
 
     def configure(self):
-        self.devices = self.initialize_hardware()
-        self.tasks.append(AnalogTask(self.system_config["analog input devices"],self.analog_packet_queue)) # Append Analog Input Task
+        self.tasks.append(AnalogTask(self.channels["Analog Input"],self.analog_packet_queue)) # Append Analog Input Task
 
-    def initialize_hardware(self):
+    @classmethod
+    def get_hardware_channels(cls):
         modules = nidaqmx.system.System.local().devices[1:]
-        if len(modules) >=0:
-            return [CompactModule(module) for module in modules]
+        if len(modules) >= 0:
+            modules = [CompactModule.create(module) for module in modules]
+            channels = {}
+            for module in modules:
+                if module.io_type not in channels.keys():
+                    channels[module.io_type] = module.channels
+                else:
+                    channels[module.io_type] += module.channels
+        return channels
+    
     def run(self):
 
         self.start_all_tasks()
