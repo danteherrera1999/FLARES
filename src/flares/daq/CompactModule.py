@@ -4,6 +4,7 @@ from abc import ABC,abstractmethod
 class CompactModule(ABC):
     def __init__(self,DEVICE):
         self.device = DEVICE
+        self.ptype = DEVICE.product_type
         self.detect_hardware()
 
     def detect_hardware(self):

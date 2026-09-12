@@ -29,7 +29,7 @@ class MultiPlot:
             with dpg.group(tag=f"{plot_group}_combo_group"):
                 for i in range(4):
                     with dpg.group(tag=f"{plot_group}_combo_container_{i+1}"):
-                        channels = self.system_config["channels"]["Analog Input"]
+                        channels = self.system_config["hardware config"].all_channels["Analog Input"]
                         new_tag = f"{plot_group}_combo_{i+1}"
                         dpg.add_combo(channels, default_value=channels[i % len(channels)],tag=new_tag)
                         dpg.bind_item_handler_registry(new_tag, f"{plot_group}_combo_right_click_handler")
