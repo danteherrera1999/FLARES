@@ -11,7 +11,7 @@ class HardwareConfig():
             channels = {}
             for module in self.modules:
                 if module.io_type not in channels.keys():
-                    channels[module.io_type] = module.channels
+                    channels[module.io_type] = list(module.channels)
                 else:
                     channels[module.io_type] += module.channels
         return channels
