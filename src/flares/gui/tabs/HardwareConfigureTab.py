@@ -6,7 +6,7 @@ class HardwareConfigureTab:
         self.tag = "window_hardware_configure"
         self.system_config = SYSTEM_CONFIG
         self.tabs = []
-        self.channelElements = self.generate_channel_elements()
+        self.generate_channel_elements()
         dpg.hide_item(self.tag)
         
     def generate_channel_elements(self):
@@ -19,7 +19,6 @@ class HardwareConfigureTab:
                             for channel in module.channels:
                                 with dpg.table_row():
                                     dpg.add_text(channel)
-        return None
 
     def handle_resize(self, new_width, new_height):
         pass
