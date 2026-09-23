@@ -2,6 +2,7 @@ from daq.DaqManager import DaqManager
 from gui.GuiMain import GuiMain
 from data.PlotBuffer import PlotBuffer
 from flares.daq.HardwareConfig import HardwareConfig
+from flares.config.ConfigStore import ConfigStore
 import nidaqmx
 import numpy as np
 import queue
@@ -12,6 +13,9 @@ config={
         "plot buffer": PlotBuffer(),
         }
 config["channel map"]= {ch: i for i, ch in enumerate(config["hardware config"].all_channels["Analog Input"])}
+
+config["config store"]= ConfigStore(config)
+
 
 my_daq_manager = DaqManager(config)
 

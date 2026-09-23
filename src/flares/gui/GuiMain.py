@@ -3,6 +3,7 @@ from gui.tabs.DataTab import DataTab
 from gui.tabs.ConfigureTab import ConfigureTab
 from gui.tabs.HardwareConfigureTab import HardwareConfigureTab
 
+
 class GuiMain():
     def __init__(self,SYSTEM_CONFIG):
         self.system_config = SYSTEM_CONFIG
@@ -25,7 +26,10 @@ class GuiMain():
                 self.tabs["DATA"] = DataTab(self.system_config)
                 self.tabs["CONFIGURE"] = ConfigureTab(self.system_config)
                 self.tabs["HARDWARE CONFIGURE"] = HardwareConfigureTab(self.system_config)
-
+        # with dpg.theme() as main_window_theme:
+        #     with dpg.theme_component(dpg.mvWindowAppItem):
+        #         dpg.add_theme_color(dpg.mvThemeCol_WindowBg,(0,105,180,255),category=dpg.mvThemeCat_Core)
+        # dpg.bind_item_theme("window_main",main_window_theme)
         dpg.set_primary_window("window_main", True)
         dpg.set_viewport_resize_callback(self.viewport_resize_handler)
 

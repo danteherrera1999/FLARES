@@ -1,4 +1,5 @@
 import dearpygui.dearpygui as dpg
+import threading
 # Give combo boxes categories (user configurable) as well as their names
 # Let user pick between a few different timebase buffers
 # Let the user select a region from the dynamic plot to static plot it
@@ -7,10 +8,12 @@ class MultiPlot:
     def __init__(self, SYSTEM_CONFIG, parent=None):
         self.parent = parent
         self.system_config = SYSTEM_CONFIG
+        self.stored_config = SYSTEM_CONFIG["config store"]
         self.data_buffers = self.system_config["plot buffer"].buffers
         self.channel_map = self.system_config["channel map"]
         self.tag = self.generate_elements()
         self.rate = 1000
+        self.n_config = -1
 
     def generate_elements(self):
 
@@ -73,8 +76,14 @@ class MultiPlot:
             dpg.show_item(ls_tag)
             dpg.bind_item_theme(combo_tag, 0)
 
+    def update_channel_info(self):
+        pass
 
     def update(self):
+        n_config = self.stored_config.get_n_config()
+        if n_config != self.n_config:
+            self.n_config = n_config
+            print(f"{self.tag} processed config change to config {self.n_config}")
         t_arr,data_mat = self.data_buffers[self.rate].get_ordered_data()
         if t_arr.size>0:
             dpg.set_axis_limits(f"{self.tag}_xaxis", t_arr[0], t_arr[-1])
