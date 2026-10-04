@@ -1,0 +1,596 @@
+{
+  "modules": {
+    "cDAQ1Mod1": [
+      {
+        "group": "hello",
+        "alias": "world"
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      }
+    ],
+    "cDAQ1Mod2": [
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      }
+    ],
+    "cDAQ1Mod3": [
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      }
+    ],
+    "cDAQ1Mod4": [
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      }
+    ],
+    "cDAQ1Mod8": [
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      }
+    ],
+    "cDAQ1Mod9": [
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      }
+    ],
+    "cDAQ1Mod11": [
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      }
+    ],
+    "cDAQ1Mod12": [
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      },
+      {
+        "group": "",
+        "alias": ""
+      }
+    ]
+  }
+}
