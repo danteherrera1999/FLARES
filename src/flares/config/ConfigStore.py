@@ -18,11 +18,12 @@ class ConfigStore:
             self.stored_config = {"module info":{}}
             for module in self.modules:
                 channel_info = [ChannelConfig(channel,module) for channel in module.channels]
-                n = sum(np.array([module.name in name for name in self.stored_config["module info"].keys()]))
-                if n ==0:
-                    self.stored_config["module info"][module.name] = channel_info
-                else:
-                    self.stored_config["module info"][f"{module.name}_{n+1}"]=channel_info
+                self.stored_config["module info"][module] = channel_info
+                # n = sum(np.array([module.name in name for name in self.stored_config["module info"].keys()]))
+                # if n ==0:
+                #     self.stored_config["module info"][module.name] = channel_info
+                # else:
+                #     self.stored_config["module info"][f"{module.name}_{n+1}"]=channel_info
             self.n_config += 1
 
     def update(self,NEW_CONFIG):
@@ -36,14 +37,28 @@ class ConfigStore:
         with self.lock:
             return self.n_config
 
+    def get_stored_config(self):
+        with self.lock:
+            return self.stored_config
+
+
 class ChannelConfig:
 
     def __init__(self,CHANNEL,MODULE):
         self.name = CHANNEL
         self.type = MODULE.ptype
+        self.parent = MODULE.name
         self.alias = ""
         self.group = ""
         self.enabled = False
+
+    def __repr__(self):
+        return str({"name":self.name,
+                "parent":self.parent,
+                "type":self.type,
+                "alias":self.alias,
+                "group":self.group,
+                "enabled":self.enabled})
 
     def update(self,NEW_INFO):
         self.group = NEW_INFO["group"]

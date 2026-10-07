@@ -23,7 +23,7 @@ class ConfigureTab:
                 for module in self.system_config["hardware config"].modules:
                     channelElements = []
                     module_name = module.name
-                    n = sum(np.array([module.name in name for name in self.modules.keys()]))
+                    n = sum(np.array([module.name in name for name in [m.name for m in self.modules.keys()]]))
                     if n !=0:
                         module_name = f"{module.name}_{n+1}"
                     with dpg.tab(label=module_name):
@@ -34,13 +34,16 @@ class ConfigureTab:
                             dpg.add_table_column(label="Alias")
                             for channel in module.channels:
                                 channelElements.append(ChannelConfigElement(channel,module))
-                    self.modules[module.name] = channelElements
+                    self.modules[module] = channelElements
 
     def handle_save(self):
         self.config_store.update(self.get_packaged_channel_info())
 
     def handle_save_to_file(self):
-        config = self.get_packaged_channel_info()
+        config = {
+            module.name: channel_info
+            for module, channel_info in self.get_packaged_channel_info().items()
+        }
         try:
             self.validate_config(config)
             with self.config_path.open("w", encoding="utf-8") as config_file:
@@ -61,26 +64,31 @@ class ConfigureTab:
             dpg.set_value("config_file_status", f"Could not load config: {error}")
             return
 
-        for module_name, channel_elements in self.modules.items():
-            for channel_element, channel_info in zip(channel_elements, config[module_name]):
+        for module, channel_elements in self.modules.items():
+            for channel_element, channel_info in zip(channel_elements, config[module.name]):
                 for field, value in channel_info.items():
                     dpg.set_value(channel_element.input_elements[field], value)
-        self.config_store.update(config)
+        runtime_config = {
+            module: config[module.name]
+            for module in self.modules
+        }
+        self.config_store.update(runtime_config)
         dpg.set_value("config_file_status", f"Loaded {self.config_path}")
 
     def validate_config(self, config):
-        if not isinstance(config, dict) or set(config) != set(self.modules):
+        module_names = {module.name for module in self.modules}
+        if not isinstance(config, dict) or set(config) != module_names:
             raise ValueError("hardware mismatch")
 
-        for module_name, channel_elements in self.modules.items():
-            channel_info = config[module_name]
+        for module, channel_elements in self.modules.items():
+            channel_info = config[module.name]
             if not isinstance(channel_info, list) or len(channel_info) != len(channel_elements):
-                raise ValueError(f"invalid channel list for module {module_name}")
+                raise ValueError(f"invalid channel list for module {module.name}")
             for entry in channel_info:
                 if (not isinstance(entry, dict)
                         or set(entry) != {"group", "alias"}
                         or any(not isinstance(value, str) for value in entry.values())):
-                    raise ValueError(f"invalid channel settings for module {module_name}")
+                    raise ValueError(f"invalid channel settings for module {module.name}")
 
     def handle_resize(self, new_width, new_height):
         pass

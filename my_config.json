@@ -2,24 +2,24 @@
   "modules": {
     "cDAQ1Mod1": [
       {
-        "group": "hello",
-        "alias": "world"
+        "group": "",
+        "alias": "hello"
       },
       {
         "group": "",
-        "alias": ""
+        "alias": "darkness"
       },
       {
         "group": "",
-        "alias": ""
+        "alias": "my"
       },
       {
         "group": "",
-        "alias": ""
+        "alias": "old"
       },
       {
         "group": "",
-        "alias": ""
+        "alias": "friend"
       },
       {
         "group": "",
