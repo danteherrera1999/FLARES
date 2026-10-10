@@ -1,6 +1,7 @@
 import dearpygui.dearpygui as dpg
 import threading
 import numpy as np
+# from flares.gui.widgets.NestedCombo import NestedCombo
 # Give combo boxes categories (user configurable) as well as their names
 # Let user pick between a few different timebase buffers
 # Let the user select a region from the dynamic plot to static plot it
