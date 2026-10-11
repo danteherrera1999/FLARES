@@ -2,23 +2,23 @@
   "modules": {
     "cDAQ1Mod1": [
       {
-        "group": "",
+        "group": "my favorite group",
         "alias": "hello"
       },
       {
-        "group": "",
+        "group": "my favorite group",
         "alias": "darkness"
       },
       {
-        "group": "",
+        "group": "my favorite group",
         "alias": "my"
       },
       {
-        "group": "",
+        "group": "my favorite group",
         "alias": "old"
       },
       {
-        "group": "",
+        "group": "my favorite group",
         "alias": "friend"
       },
       {
