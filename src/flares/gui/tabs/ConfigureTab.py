@@ -28,6 +28,7 @@ class ConfigureTab:
                         module_name = f"{module.name}_{n+1}"
                     with dpg.tab(label=module_name):
                         with dpg.table():
+                            dpg.add_table_column(label="Enabled")
                             dpg.add_table_column(label="Type")
                             dpg.add_table_column(label="Channel")
                             dpg.add_table_column(label="Group")
@@ -86,8 +87,7 @@ class ConfigureTab:
                 raise ValueError(f"invalid channel list for module {module.name}")
             for entry in channel_info:
                 if (not isinstance(entry, dict)
-                        or set(entry) != {"group", "alias"}
-                        or any(not isinstance(value, str) for value in entry.values())):
+                        or set(entry) != {"enabled","group", "alias"}):
                     raise ValueError(f"invalid channel settings for module {module.name}")
 
     def handle_resize(self, new_width, new_height):
@@ -113,6 +113,8 @@ class ChannelConfigElement:
 
     def generate_channel_element(self):
         with dpg.table_row(tag=f"channel_{self.name}_config"):
+            
+            self.input_elements["enabled"]=dpg.add_checkbox(default_value=False,tag=f"{self.name}_enabled_input")
             dpg.add_text(self.module.io_type)
             dpg.add_text(self.name)
             self.input_elements["group"]=dpg.add_input_text(tag=f"{self.name}_group_input")

@@ -2,592 +2,736 @@
   "modules": {
     "cDAQ1Mod1": [
       {
-        "group": "my favorite group",
-        "alias": "hello"
+        "enabled": true,
+        "group": "Thermocouples",
+        "alias": "TC1"
       },
       {
-        "group": "my favorite group",
-        "alias": "darkness"
+        "enabled": true,
+        "group": "Thermocouples",
+        "alias": "TC2"
       },
       {
-        "group": "my favorite group",
-        "alias": "my"
+        "enabled": true,
+        "group": "Thermocouples",
+        "alias": "TC3"
       },
       {
-        "group": "my favorite group",
-        "alias": "old"
+        "enabled": true,
+        "group": "Thermocouples",
+        "alias": "TC4"
       },
       {
-        "group": "my favorite group",
-        "alias": "friend"
+        "enabled": true,
+        "group": "Thermocouples",
+        "alias": "TC5"
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Vacuum Gauges",
+        "alias": "VG1"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Vacuum Gauges",
+        "alias": "VG2"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Pressure Transducers",
+        "alias": "PT1"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
+        "enabled": false,
         "group": "",
         "alias": ""
       }
     ],
     "cDAQ1Mod2": [
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Pressure Transducers",
+        "alias": "PT2"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Vacuum Gauges",
+        "alias": "VG3"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Pressure Transducers",
+        "alias": "PT3"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Vacuum Gauges",
+        "alias": "VG4"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Thermocouples",
+        "alias": "TC6"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
+        "enabled": false,
         "group": "",
         "alias": ""
       }
     ],
     "cDAQ1Mod3": [
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Vacuum Gauges",
+        "alias": "VG5"
+      },
+      {
+        "enabled": true,
+        "group": "Pressure Transducers",
+        "alias": "PT4"
+      },
+      {
+        "enabled": true,
+        "group": "Pressure Transducers",
+        "alias": "PT5"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Thermocouples",
+        "alias": "TC7"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Pressure Transducers",
+        "alias": "PT6"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Thermocouples",
+        "alias": "TC8"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
+        "enabled": false,
         "group": "",
         "alias": ""
       }
     ],
     "cDAQ1Mod4": [
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Thermocouples",
+        "alias": "TC9"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Vacuum Gauges",
+        "alias": "VG6"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Vacuum Gauges",
+        "alias": "VG7"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": true,
+        "group": "Pressure Transducers",
+        "alias": "PT7"
+      },
+      {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
-        "group": "",
-        "alias": ""
-      },
-      {
+        "enabled": false,
         "group": "",
         "alias": ""
       }
     ],
     "cDAQ1Mod8": [
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       }
     ],
     "cDAQ1Mod9": [
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       }
     ],
     "cDAQ1Mod11": [
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       }
     ],
     "cDAQ1Mod12": [
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       },
       {
+        "enabled": false,
         "group": "",
         "alias": ""
       }

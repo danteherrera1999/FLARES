@@ -63,3 +63,4 @@ class ChannelConfig:
     def update(self,NEW_INFO):
         self.group = NEW_INFO["group"]
         self.alias = NEW_INFO["alias"]
+        self.enabled = NEW_INFO["enabled"]

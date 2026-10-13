@@ -24,24 +24,25 @@ class MultiPlot:
     def generate_elements(self):
 
         with dpg.theme() as self.disabled_theme:
-            with dpg.theme_component(dpg.mvCombo):
+            with dpg.theme_component(dpg.mvButton):
                 dpg.add_theme_color(dpg.mvThemeCol_Button, [50, 50, 50])
                 dpg.add_theme_color(dpg.mvThemeCol_Text, [150, 150, 150])
 
         with dpg.group(horizontal=True, parent=self.parent) as self.tag:
-            with dpg.item_handler_registry(tag=f"{self.tag}_combo_right_click_handler"):
-                dpg.add_item_clicked_handler(
-                    button=dpg.mvMouseButton_Right,
-                    callback=self.handle_combo_right_click,
-                )
+    
             with dpg.group(tag=f"{self.tag}_combo_group",horizontal=False):
                 for j in range(4):
                     with dpg.group(tag=f"{self.tag}_combo_container_{j+1}"):
                         self.combos.append(NestedCombo())
+                    
                         with dpg.group(horizontal=True, tag=f"{self.tag}_combo_data_group_{j+1}"):
                             dpg.add_text("mV", tag=f"{self.tag}_chan_{j+1}_unit")
                             dpg.add_text("-100", tag=f"{self.tag}_chan_{j+1}_min")
                             dpg.add_text("100", tag=f"{self.tag}_chan_{j+1}_max")
+
+                        with dpg.item_handler_registry() as registry:
+                            dpg.add_item_clicked_handler(button=dpg.mvMouseButton_Right,callback=self.handle_combo_right_click,user_data=j)
+                            dpg.bind_item_handler_registry(self.combos[-1].tag, registry)
 
                 dpg.add_combo(
                             [1, 10, 100, 1_000, 10_000],
@@ -78,8 +79,8 @@ class MultiPlot:
         self.rate = int(app_data)
 
     def handle_combo_right_click(self, sender, app_data, user_data):
-        combo_tag = app_data[1]
-        ls_tag = combo_tag.replace("combo", "ls")
+        combo_tag = self.combos[user_data].tag
+        ls_tag = f"{self.tag}_ls_{user_data+1}"
         if dpg.is_item_shown(ls_tag):
             dpg.hide_item(ls_tag)
             dpg.bind_item_theme(combo_tag, self.disabled_theme)
@@ -105,10 +106,11 @@ class MultiPlot:
                         self.channel_map[new_channel_name] = i
 
                         channel_group = channel.group or channel.parent
-                        if channel_group in new_combo_data.keys():
-                            new_combo_data[channel_group].append(new_channel_name)
-                        else:
-                            new_combo_data[channel_group] = [new_channel_name]
+                        if channel.enabled:
+                            if channel_group in new_combo_data.keys():
+                                new_combo_data[channel_group].append(new_channel_name)
+                            else:
+                                new_combo_data[channel_group] = [new_channel_name]
                         i += 1
 
             self.regenerate_combos(new_combo_data)
